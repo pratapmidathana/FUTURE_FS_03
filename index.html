@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshCart — Farm Fresh Vegetables</title>
+  <meta name="description" content="FreshCart delivers farm-fresh organic vegetables to your doorstep daily.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-2 .5-4 1-6 2.5" />
+          <path d="M11.7 12.5c.7-.4 1.5-.7 2.3-.8" />
+        </svg>
+        Fresh<span class="logo-accent">Cart</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-primary btn-sm nav-login" onclick="openModal('login')">Login</button>
+        <button class="cart-btn" id="cartBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn-primary w-full" onclick="openModal('login')">Login</button>
+    </div>
+  </nav>
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80" alt="Fresh organic vegetables" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <span class="hero-tag">🌿 100% Organic &amp; Fresh</span>
+      <h1>Farm Fresh<br>Vegetables,<br><span class="text-accent">Delivered Daily</span></h1>
+      <p>From our local farms straight to your kitchen. Experience the freshest produce with same-day delivery.</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn-accent btn-lg">Shop Now</a>
+        <a href="#about" class="btn-outline-white">Learn More</a>
+      </div>
+      <div class="hero-search">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" placeholder="Search for vegetables..." />
+      </div>
+    </div>
+  </section>
+  <section class="section bg-secondary-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+        <p>Browse our fresh selection of organic produce</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon">🥬</div>
+          <h3>Leafy Greens</h3>
+          <p>24 items</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🍎</div>
+          <h3>Fruits</h3>
+          <p>18 items</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🥕</div>
+          <h3>Root Vegetables</h3>
+          <p>15 items</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🌿</div>
+          <h3>Herbs &amp; Spices</h3>
+          <p>12 items</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="products" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Fresh Products</h2>
+        <p>Hand-picked from local organic farms</p>
+      </div>
+      <div class="products-layout">
+        <aside class="products-sidebar">
+          <div class="sidebar-group">
+            <h4>Category</h4>
+            <div class="filter-buttons" id="filterButtons">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="leafy">Leafy Greens</button>
+              <button class="filter-btn" data-filter="fruits">Fruits</button>
+              <button class="filter-btn" data-filter="root">Root Vegetables</button>
+              <button class="filter-btn" data-filter="herbs">Herbs</button>
+            </div>
+          </div>
+          <div class="sidebar-group">
+            <h4>Sort By</h4>
+            <select class="fresh-input" id="sortSelect">
+              <option value="default">Default</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </aside>
+        <div class="products-grid" id="productsGrid">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="offer-banner">
+        <div class="offer-circle offer-circle-1"></div>
+        <div class="offer-circle offer-circle-2"></div>
+        <div class="offer-content">
+          <div class="offer-text">
+            <span class="offer-tag">⏱ Limited Time Offer</span>
+            <h2>Get <span class="text-accent">30% OFF</span><br>Your First Order</h2>
+            <p>Use code <strong class="text-accent">FRESH30</strong> at checkout. Valid for new customers only.</p>
+            <a href="#products" class="btn-accent btn-lg">Shop Now</a>
+          </div>
+          <div class="offer-emoji">🥗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-secondary-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Today's Market Prices</h2>
+        <p>Updated daily from local markets</p>
+      </div>
+      <div class="today-scroll" id="todayScroll">
+      </div>
+    </div>
+  </section>
+  <section id="about" class="section bg-secondary-section">
+    <div class="container text-center">
+      <h2>About FreshCart</h2>
+      <p class="about-text">We partner with over 50 local organic farms to bring you the freshest produce every single
+        day. Our mission is to make healthy eating accessible, affordable, and sustainable for everyone.</p>
+    </div>
+  </section>
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>We'd love to hear from you</p>
+      </div>
+      <div class="contact-grid">
+        <div class="card contact-form-card">
+          <div class="contact-success" id="contactSuccess" style="display:none;">✅ Message sent successfully!</div>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" class="fresh-input" id="contactName" />
+              <span class="form-error" id="contactNameError"></span>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" class="fresh-input" id="contactEmail" />
+              <span class="form-error" id="contactEmailError"></span>
+            </div>
+            <div class="form-group">
+              <textarea rows="5" placeholder="Your Message" class="fresh-input" id="contactMessage"></textarea>
+              <span class="form-error" id="contactMessageError"></span>
+            </div>
+            <button type="submit" class="btn-primary w-full">✉ Send Message</button>
+          </form>
+          <div class="contact-info">
+            <div>📍 123 Farm Road, Green Valley, CA</div>
+            <div>📞 (555) 123-4567</div>
+            <div>✉️ hello@freshcart.com</div>
+          </div>
+        </div>
+        <div class="card map-card">
+          <iframe title="FreshCart Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064e2b5e027%3A0x3f5e0e0c0f0e3e0e!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">🍃 Fresh<span class="logo-accent">Cart</span></div>
+          <p class="footer-desc">Farm-fresh vegetables delivered to your doorstep. Quality you can trust.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <span>Leafy Greens</span>
+          <span>Fruits</span>
+          <span>Root Vegetables</span>
+          <span>Herbs</span>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <p>Get weekly deals &amp; fresh picks</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="fresh-input" />
+            <button class="btn-primary">Go</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 FreshCart. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 id="modalTitle">Welcome Back</h2>
+      <form id="authForm" class="auth-form">
+        <div class="form-group" id="nameGroup" style="display:none;">
+          <input type="text" placeholder="Full Name" class="fresh-input" id="authName" />
+          <span class="form-error" id="authNameError"></span>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" class="fresh-input" id="authEmail" />
+          <span class="form-error" id="authEmailError"></span>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="fresh-input" id="authPassword" />
+          <span class="form-error" id="authPasswordError"></span>
+        </div>
+        <div class="form-group" id="confirmGroup" style="display:none;">
+          <input type="password" placeholder="Confirm Password" class="fresh-input" id="authConfirm" />
+          <span class="form-error" id="authConfirmError"></span>
+        </div>
+        <button type="submit" class="btn-primary w-full" id="authSubmitBtn">Login</button>
+      </form>
+      <div class="modal-divider"><span>or</span></div>
+      <button class="google-btn" id="googleBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4"
+            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
+          <path fill="#34A853"
+            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+          <path fill="#FBBC05"
+            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+          <path fill="#EA4335"
+            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+        </svg>
+        <span id="googleBtnText">Login with Google</span>
+      </button>
+      <p class="modal-toggle-text">
+        <span id="toggleText">Don't have an account? </span>
+        <button id="toggleBtn" onclick="toggleAuthMode()">Sign Up</button>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
